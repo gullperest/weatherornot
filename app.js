@@ -34,8 +34,8 @@ let url =
 let urlForecast = "";
 let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" + id;
 // fetch event api
-//let eventbriteApiKey = "SOG7QNZWMTSXVCDBCTTK";
-//let eventbriteUrl = "https://www.eventbriteapi.com/v3/users/me/?token=" + eventbriteApiKey;
+let eventbriteApiKey = "SOG7QNZWMTSXVCDBCTTK";
+let eventbriteUrl = "https://www.eventbriteapi.com/v3/users/me/?token=" + eventbriteApiKey;
 
 function authoriseUser() {
   const authURL = `https://www.eventbrite.com/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}`;
