@@ -10,9 +10,9 @@ let main = document.querySelector("main");
 //forecast div
 let forecastDiv = document.getElementById("forecast")
 //authorise the user
-const clientId = "495469206217";
+const clientId = "PLV5BQ5AJQEU4CKF2J";
 const clientSecret = "7VU77IK4ZNSM3KYARGO2NXFFWL5SA33K4DPYXM4NWS6T5PMAVR";
-const redirectUri = 'YOUR_REDIRECT_URI';
+const redirectUri = 'https://gullperest.github.io/weatherornot/';
 
 //events div
 let eventsDiv = document.getElementById("events")
@@ -36,6 +36,11 @@ let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric
 // fetch event api
 let eventbriteApiKey = "LOI25EIEQ5DSGPYSBJLQ";
 let eventbriteUrl = "https://www.eventbriteapi.com/v3/users/me/?token=" + eventbriteApiKey;
+
+function authoriseUser() {
+  const authURL = `https://www.eventbrite.com/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+  window.location.href = authURL; // Redirect the user to Eventbrite for authorization
+}
 
 async function searchWeather() {
   let response = await fetch(url + "&q=" + valueSearch.value);
@@ -132,9 +137,11 @@ function displayForecast(forecastData) {
   forecastDiv.innerHTML += `<div class="forecast-items">${forecastItems}</div>`;
 }
 // Fetch events based on temperature
-async function fetchEvents(temperature, cityName) {
+sync function fetchEvents(temperature, cityName) {
   try {
     let eventType = temperature >= 25 ? "outdoor" : "indoor";
+    let accessToken = " LOI25EIEQ5DSGPYSBJLQ"
+
     let eventsResponse = await fetch(eventbriteUrl + "&q=" + eventType + "&location.address=" + cityName);
     let eventsData = await eventsResponse.json();
     console.log("Events data", eventsData);
@@ -148,7 +155,6 @@ async function fetchEvents(temperature, cityName) {
     console.error("Error fetching events:", error);
   }
 }
-
 function displayEvents(events) {
   eventsDiv.innerHTML = "<h2>Recommended Events</h2>";
 
