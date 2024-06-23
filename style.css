@@ -1,0 +1,196 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  background-image: url("image01.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 350px;
+  padding: 20px 20px 0px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+main form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background: rgba(29, 29, 29, 0.2);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+main form input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+main form input::placeholder {
+  color: #ddd;
+}
+
+main form button {
+  padding: 10px 15px;
+  margin-left: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+main form button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+main .result {
+  padding: 20px 0;
+}
+
+main .result figure {
+  margin-bottom: 15px;
+}
+
+main .result .name figcaption {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+main .result .temperature img {
+  width: 100px;
+}
+
+main .result .temperature figcaption {
+  font-size: 2.5em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #fff;
+}
+
+main .result .temperature figcaption span {
+  font-size: 2em;
+}
+
+main .result .description {
+  font-size: 1.2em;
+  margin: 15px 0;
+  color: #ddd;
+}
+
+main ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+
+main li {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+main li:hover {
+  background-color: rgba(255, 255, 255, 0.405);
+}
+
+main li:nth-child(2) {
+  background-color: rgba(34, 167, 255, 0.2);
+}
+main li:nth-child(2):hover {
+  background-color: rgba(14, 159, 255, 0.595);
+}
+
+main li:nth-child(3) {
+  background-color: rgba(22, 137, 70, 0.2);
+}
+main li:nth-child(3):hover {
+  background-color: rgba(26, 165, 84, 0.804);
+}
+
+main li i {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  padding: 10px;
+  display: block !important;
+}
+
+main.error {
+  animation: errorEffect 0.3s linear 1;
+}
+
+@keyframes errorEffect {
+  0% {
+    transform: translate(10px, 5px);
+  }
+
+  25% {
+    transform: translate(-5px, 0px);
+  }
+
+  50% {
+    transform: translate(10px, 10px);
+  }
+
+  75% {
+    transform: translate(-2px, -5px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+/* Add styles for forecast section */
+.forecast-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.forecast-item {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.forecast-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
