@@ -41,6 +41,59 @@ function authoriseUser() {
   const authURL = `https://www.eventbrite.com/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}`;
   window.location.href = authURL; // Redirect the user to Eventbrite for authorization
 }
+async function exchangeCodeForToken(code) {
+  const tokenUrl = 'https://www.eventbrite.com/oauth/token';
+  const requestBody = {
+    code: code,
+    client_id: clientId,
+    client_secret: clientSecret,
+    redirect_uri: redirectUri,
+    grant_type: 'authorization_code'
+  };
+
+  try {
+    const response = await fetch(tokenUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to exchange code for token');
+    }
+
+    const tokenData = await response.json();
+    const accessToken = tokenData.access_token;
+    // Now you can use accessToken to make authenticated API requests
+    return accessToken;
+  } catch (error) {
+    console.error('Error exchanging code for token:', error);
+    throw error;
+  }
+}
+async function fetchEvents(accessToken, location) {
+  const eventsUrl = `https://www.eventbriteapi.com/v3/events/search/?location.address=${location}`;
+
+  try {
+    const response = await fetch(eventsUrl, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch events');
+    }
+
+    const eventData = await response.json();
+    return eventData;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    throw error;
+  }
+}
 
 async function searchWeather() {
   let response = await fetch(url + "&q=" + valueSearch.value);
