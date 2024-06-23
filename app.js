@@ -10,8 +10,8 @@ let main = document.querySelector("main");
 //forecast div
 let forecastDiv = document.getElementById("forecast")
 //authorise the user
-const clientId = "PLV5BQ5AJQEU4CKF2J";
-const clientSecret = "7VU77IK4ZNSM3KYARGO2NXFFWL5SA33K4DPYXM4NWS6T5PMAVR";
+const clientId = "C5FSYFI3ZB5OINQI7S";
+const clientSecret = "JJQLLYACQMBPZ4T66FNO2Q67I5OFHUJ2YF5NUCL24F6QLSSL6Y";
 const redirectUri = 'https://gullperest.github.io/weatherornot/';
 
 //events div
@@ -34,7 +34,7 @@ let url =
 let urlForecast = "";
 let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" + id;
 // fetch event api
-let eventbriteApiKey = "LOI25EIEQ5DSGPYSBJLQ";
+let eventbriteApiKey = "SOG7QNZWMTSXVCDBCTTK";
 let eventbriteUrl = "https://www.eventbriteapi.com/v3/users/me/?token=" + eventbriteApiKey;
 
 function authoriseUser() {
@@ -140,7 +140,7 @@ function displayForecast(forecastData) {
 sync function fetchEvents(temperature, cityName) {
   try {
     let eventType = temperature >= 25 ? "outdoor" : "indoor";
-    let accessToken = " LOI25EIEQ5DSGPYSBJLQ"
+    let accessToken = " SOG7QNZWMTSXVCDBCTTK"
 
     let eventsResponse = await fetch(eventbriteUrl + "&q=" + eventType + "&location.address=" + cityName);
     let eventsData = await eventsResponse.json();
